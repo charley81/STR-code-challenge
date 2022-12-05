@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 import { AddTask, Task } from './index'
 import { TasksContext } from '../context/TasksContext'
+import styled from 'styled-components'
 
 export default function Tasklist() {
   const tasks = useContext(TasksContext)
 
   return (
-    <div>
+    <Wrapper>
       <AddTask />
       <ul>
         {tasks.map(task => (
@@ -15,6 +16,11 @@ export default function Tasklist() {
           </li>
         ))}
       </ul>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  max-width: var(--maxWidthMed);
+  margin: auto;
+`

@@ -36,8 +36,6 @@ const Wrapper = styled.header`
   padding: 2rem 0;
   display: flex;
   justify-content: flex-start;
-  max-width: var(--maxWidthMed);
-  margin: auto;
 
   input {
     width: 100%;
@@ -46,6 +44,8 @@ const Wrapper = styled.header`
     border: 1px solid var(--colorGreyLight);
     padding: 1rem;
     border-radius: 0 4px 4px 0;
+    font-size: 1rem;
+    font-family: var(--fontFamily);
   }
 
   button {
@@ -55,5 +55,8 @@ const Wrapper = styled.header`
     outline: none;
     background: var(--colorPrimary);
     color: var(--colorLight);
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-family: var(--fontFamily);
   }
 `
