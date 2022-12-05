@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import AddTask from './add-task'
+import Task from './task'
 
 export default function Tasklist({
   tasks,
@@ -12,7 +13,9 @@ export default function Tasklist({
       <AddTask onAddTask={onAddTask} />
       <ul>
         {tasks.map(task => (
-          <li key={task.id}>{task.text}</li>
+          <li key={task.id}>
+            <Task task={task} onDelete={onDeleteTask} onChange={onChangeTask} />
+          </li>
         ))}
       </ul>
     </div>
