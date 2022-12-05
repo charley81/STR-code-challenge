@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useReducer } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Tasklist, About, CompletedList } from './components/index'
 
@@ -6,14 +6,7 @@ function App() {
   const [tasks, setTasks] = useState(initialTask)
 
   function handleAddTask(text) {
-    setTasks([
-      ...tasks,
-      {
-        id: nextId++,
-        text: text,
-        done: false
-      }
-    ])
+    dispatch
   }
 
   function handleChangeTask(task) {
