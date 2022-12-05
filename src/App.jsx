@@ -39,7 +39,7 @@ function App() {
           path="/"
           element={
             <Tasklist
-              onAddTasks={handleAddTask}
+              onAddTask={handleAddTask}
               tasks={tasks}
               onChangeTask={handleChangeTask}
               onDeleteTask={handleDeleteTask}
