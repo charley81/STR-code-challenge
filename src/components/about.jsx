@@ -63,6 +63,7 @@ export default function About() {
 const Wrapper = styled.section`
   max-width: var(--maxWidthMed);
   margin: 2rem auto 0;
+  padding: 1rem;
 
   h1 {
     margin-bottom: 1rem;
