@@ -1,4 +1,5 @@
-function tasksReducer(tasks, action) {
+// reducer function takes in two arguments, the current state and the action object, and it returns the next state d
+export default function tasksReducer(tasks, action) {
   switch (action.type) {
     case 'added': {
       return [

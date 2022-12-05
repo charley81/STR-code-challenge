@@ -8,7 +8,9 @@
   --colorGreyLight: #959da4;
   --colorGreyDark: #383c40;
   --transition: all 0.2s ease;
-  --max-width: 1100px;
+  --maxWidth: 1100px;
+  --maxWidthMed: 600px;
+  --borderRadius: 4px;
 }
 
 * {
@@ -20,4 +22,14 @@
 body {
   line-height: 1.5;
   font-family: var(--fontFamily);
+  color: var(--colorDark);
+  background: var(--colorLight);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }

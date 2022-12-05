@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { TasksDispatchContext } from '../context/TasksContext'
 
 export default function Task({ task, onChange, onDelete }) {
   const [isEditing, setIdEditing] = useState(false)
+  const dispatch = useContext(TasksDispatchContext)
   let taskContent
 
   if (isEditing) {
@@ -10,9 +12,12 @@ export default function Task({ task, onChange, onDelete }) {
         <input
           value={task.text}
           onChange={e => {
-            onChange({
-              ...task,
-              text: e.target.value
+            dispatch({
+              type: 'changed',
+              task: {
+                ...task,
+                text: e.target.value
+              }
             })
           }}
         />
@@ -33,14 +38,26 @@ export default function Task({ task, onChange, onDelete }) {
         type="checkbox"
         checked={task.done}
         onChange={e => {
-          onChange({
-            ...task,
-            done: e.target.checked
+          dispatch({
+            type: 'changed',
+            task: {
+              ...task,
+              done: e.target.checked
+            }
           })
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>delete</button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'deleted',
+            id: task.id
+          })
+        }}
+      >
+        delete
+      </button>
     </label>
   )
 }

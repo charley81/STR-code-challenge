@@ -1,0 +1,3 @@
+- created mvp and setup functionality in app.js
+- moved component logic into a reducer: Component logic can be easier to read when you separate concerns like this. Now the event handlers only specify what happened by dispatching actions, and the reducer function determines how the state updates in response to them. // use reducer is more descriptive of the users intent
+- added context: stop prop drilling and cleanup app file from containing state update functions

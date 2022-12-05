@@ -1,56 +1,34 @@
-import { useReducer } from 'react'
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Tasklist, About, CompletedList } from './components/index'
+import {
+  Tasklist,
+  About,
+  CompletedList,
+  Navbar,
+  Sidebar
+} from './components/index'
+import { TasksProvider } from './context/TasksContext'
 
 function App() {
-  const [tasks, setTasks] = useState(initialTask)
+  const [openNav, setOpenNav] = useState(false)
 
-  function handleAddTask(text) {
-    dispatch
-  }
-
-  function handleChangeTask(task) {
-    setTasks(
-      tasks.map(t => {
-        if (t.id === task.id) {
-          return task
-        } else {
-          return t
-        }
-      })
-    )
-  }
-
-  function handleDeleteTask(taskId) {
-    setTasks(tasks.filter(t => t.id !== taskId))
+  function toggleSidebar() {
+    setOpenNav(!openNav)
   }
 
   return (
-    <div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Tasklist
-              onAddTask={handleAddTask}
-              tasks={tasks}
-              onChangeTask={handleChangeTask}
-              onDeleteTask={handleDeleteTask}
-            />
-          }
-        />
-        <Route path="/completed" element={<CompletedList />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </div>
+    <>
+      <TasksProvider>
+        <Navbar toggleSidebar={toggleSidebar} />
+        <Sidebar toggleSidebar={toggleSidebar} openNav={openNav} />
+        <Routes>
+          <Route path="/" element={<Tasklist />} />
+          <Route path="/completed" element={<CompletedList />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </TasksProvider>
+    </>
   )
 }
 
 export default App
-
-let nextId = 3
-const initialTask = [
-  { id: 0, text: 'finish up coding assignment', done: true },
-  { id: 1, text: 'get back to learning typescript', done: false },
-  { id: 2, text: 'get ready for code review', done: false }
-]
